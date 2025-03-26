@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeu du jour - Gagnez un lot !</title>
+    <title>Jeu du jour par TRHACKNON </title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,6 +15,14 @@
         h1 {
             color: #ffcc00;
             text-shadow: 0px 0px 10px #ffcc00;
+        }
+        .description {
+            font-size: 1.2em;
+            margin: 20px auto;
+            width: 80%;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
         }
         .status {
             font-size: 1.5em;
@@ -37,33 +45,16 @@
 </head>
 <body>
 
-    <h1>🎁 Tentez de Gagner un Lot !</h1>
-    <p class="status">La prochaine fenêtre aléatoire s'ouvre bientôt...</p>
+    <h1>🎁Jeu proposé par TRHACKNON, Tentez de Gagner un Lot !</h1>
     
+    <div class="description">
+        <p>Bienvenue sur notre jeu quotidien ! Chaque jour, pendant <strong>10 minutes</strong> à une heure aléatoire, une fenêtre s'ouvre pour permettre à un heureux gagnant de récupérer un lot numérique.</p>
+        <p>La prochaine fenêtre aura lieu entre <strong>{{ time_range }}</strong>. Revenez à ce moment-là pour tenter votre chance !</p>
+    </div>
+
+    <p class="status">⏳ En attente de la prochaine ouverture...</p>
+
     <button id="win-btn" class="win-button">Tenter ma chance</button>
-
-    <script>
-        let timeLeft = {{ time_left }};
-        let winBtn = document.getElementById("win-btn");
-        
-        function checkStatus() {
-            if (timeLeft <= 0) {
-                document.querySelector(".status").textContent = "🚀 La fenêtre de gain est ouverte !";
-                winBtn.style.display = "block";
-                winBtn.onclick = function() {
-                    window.location.href = "/";
-                };
-            } else {
-                let minutes = Math.floor(timeLeft / 60);
-                let seconds = timeLeft % 60;
-                document.querySelector(".status").textContent = "Prochaine ouverture dans " + minutes + "m " + seconds + "s";
-                timeLeft--;
-                setTimeout(checkStatus, 1000);
-            }
-        }
-
-        checkStatus();
-    </script>
 
 </body>
 </html>
