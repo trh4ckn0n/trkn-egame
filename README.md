@@ -43,8 +43,8 @@ Ce projet est propulsé par :
 
 ### 🔹 1. Cloner le repo  
 ```bash
-git clone https://github.com/trh4ckn0n/gagnetonlot.git
-cd gagnetonlot
+git clone https://github.com/trh4ckn0n/trkn-egame.git
+cd trkn-egame
 ```
 
 ### 🔹 2. Installer les dépendances  
@@ -54,7 +54,7 @@ pip install -r requirements.txt
 
 ### 🔹 3. Lancer l'application  
 ```bash
-python app.py
+python3 app.py
 ```
 
 Le site sera accessible sur :  
