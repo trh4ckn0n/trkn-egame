@@ -25,6 +25,7 @@ def init_db():
     conn.commit()
     conn.close()
 
+    
 @app.route("/")
 def home():
     now = datetime.datetime.now()
@@ -37,13 +38,13 @@ def home():
         conn.commit()
         conn.close()
         return redirect(f"/win?password={PASSWORD}")
-    
-    # Calcul de la fourchette d'une heure avant la fenêtre de gain
-    next_window = WIN_START.strftime("%Hh")
-    next_window_range = f"{int(next_window)}h - {int(next_window)+1}h"
+
+    # Correction ici : extraire directement l'heure
+    next_window_hour = WIN_START.hour
+    next_window_range = f"{next_window_hour}h - {next_window_hour + 1}h"
 
     return render_template("index.html", time_range=next_window_range)
-
+    
 @app.route("/win", methods=["GET", "POST"])
 def win():
     password = request.args.get("password")
